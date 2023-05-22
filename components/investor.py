@@ -1,8 +1,8 @@
-import pandas as pd
-import numpy as np
+import streamlit as st
 
 from dataset import startup
 
-class Startup:
+
+class Investor:
     def __init__(self):
         self.startup = startup
