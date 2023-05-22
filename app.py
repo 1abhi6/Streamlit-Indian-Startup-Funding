@@ -7,12 +7,13 @@ Return: return_description
 
 import streamlit as st
 
-from analysis import Investor
-from analysis import Startup
+from analysis import Investor as InvestorAnalysis
+from analysis import Startup as StartupAnalysis
+from components import Investor as InvestorComponent
 
-investor = Investor()
 
-
+investor_analysis = InvestorAnalysis()
+investor_component = InvestorComponent()
 st.sidebar.title('Startup Funding analysis')
 option = st.sidebar.selectbox('Select One',['Overall Analysis','Startup','Investor'])
 
@@ -23,6 +24,8 @@ elif option == 'Startup':
     btn1 = st.sidebar.button('Find Startup details')
     st.title('Startup Analysis')
 elif option == 'Investor':
-    st.sidebar.selectbox('Select Startup',investor.investor_list())
+    investor_name = st.sidebar.selectbox('Select Startup',investor_analysis.investor_list())
     btn1 = st.sidebar.button('Find Investor details')
-    st.title('Investor Analysis')
+    st.title('Investor Detail')
+    if btn1:
+        investor_component.five_most_recent_investments(investor_name)

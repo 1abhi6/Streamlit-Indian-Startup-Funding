@@ -1,0 +1,1 @@
+from components.investor import Investor
