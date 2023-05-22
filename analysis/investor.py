@@ -23,4 +23,11 @@ class Investor:
         })
 
         return recent_investment
-
+   
+    # Highest investment made by an Investor
+    def biggest_investment(self,investor_name):
+        return self.startup[self.startup['investors'].str.contains(investor_name)].groupby('name')['amount'].sum().sort_values(ascending=False).head()
+    
+    # Sector invested in
+    def invested_sector(self,investor_name):
+        return startup[startup['investors'].str.contains(investor_name)].groupby('vertical')['amount'].sum()

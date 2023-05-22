@@ -16,6 +16,8 @@ class Main:
         self.home_component()
 
     def home_component(self):
+        # Page configuration
+        st.set_page_config(layout='wide',page_title="Abhi's Startup Analysis",page_icon='📊')
         st.sidebar.title('Startup Funding analysis')
         option = st.sidebar.selectbox('Select One',['Overall Analysis','Startup','Investor'])
 
@@ -30,5 +32,10 @@ class Main:
             btn1 = st.sidebar.button('Find Investor details')
             st.title('Investor Detail')
             if btn1:
-                self.investor_component.five_most_recent_investments(investor_name)
+                self.investor_component.recent_five_investments(investor_name)
+                col1 , col2 = st.columns(2)
+                with col1:
+                    self.investor_component.plot_biggest_investment(investor_name)
+                with col2:
+                    self.investor_component.invested_sector(investor_name)
 Main()
