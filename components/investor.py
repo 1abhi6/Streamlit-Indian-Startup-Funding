@@ -21,7 +21,7 @@ class Investor:
         axis.bar(biggest_series.index,biggest_series.values)
         st.pyplot(fig)
     
-    def invested_sector(self,investor_name):
+    def plot_invested_sector(self,investor_name):
         st.title(investor_name)
         st.subheader('Sector Invested in')
         sector_series = self.investor_analysis.invested_sector(investor_name)

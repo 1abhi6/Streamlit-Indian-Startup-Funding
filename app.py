@@ -37,5 +37,5 @@ class Main:
                 with col1:
                     self.investor_component.plot_biggest_investment(investor_name)
                 with col2:
-                    self.investor_component.invested_sector(investor_name)
+                    self.investor_component.plot_invested_sector(investor_name)
 Main()
