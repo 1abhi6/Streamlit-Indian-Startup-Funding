@@ -38,4 +38,11 @@ class Main:
                     self.investor_component.plot_biggest_investment(investor_name)
                 with col2:
                     self.investor_component.plot_invested_sector(investor_name)
+                col3,col4 = st.columns(2)
+                st.divider()
+                with col3:
+                    self.investor_component.plot_invested_city(investor_name)
+                with col4:
+                    self.investor_component.plot_invested_type(investor_name)
+                    
 Main()

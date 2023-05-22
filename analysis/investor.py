@@ -31,3 +31,11 @@ class Investor:
     # Sector invested in
     def invested_sector(self,investor_name):
         return startup[startup['investors'].str.contains(investor_name)].groupby('vertical')['amount'].sum()
+    
+    # City invested in
+    def invested_city(self,investor_name):
+        return startup[startup['investors'].str.contains(investor_name)].groupby('city')['amount'].sum()
+    
+    def invested_type(self,investor_name):
+            return startup[startup['investors'].str.contains(investor_name)].groupby('type')['amount'].sum()
+    
