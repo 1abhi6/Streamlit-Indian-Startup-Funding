@@ -1,9 +1,3 @@
-"""Streamlit App
-Keyword arguments:
-argument -- description
-Return: return_description
-"""
-
 import streamlit as st
 
 from analysis import Investor as InvestorAnalysis
@@ -62,5 +56,7 @@ class Main:
                 self.investor_component.plot_invested_type(investor_name)
             with col6:
                 self.investor_component.plot_yoy_investment(investor_name)
+            st.divider()
+            self.investor_component.get_similar_investors(investor_name)
                     
 Main()

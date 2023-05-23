@@ -1,5 +1,6 @@
 import pandas as pd
-import numpy as np
+import itertools
+import random
 
 from dataset import startup
 class Investor:
@@ -48,5 +49,30 @@ class Investor:
     def yoy_investment(self,investor_name):
         return startup[startup['investors'].str.contains(investor_name)].groupby('year')['amount'].sum().reset_index()
     
+    # Get similar investors
+    def get_similar_investors(self, investor_name):
+        # Filter the dataframe based on the investor name
+        investor_df = startup[startup['investors'].str.contains(investor_name)]
 
-    
+        if investor_df.empty:
+            # No matching rows found for the investor name
+            return pd.Series()
+
+        # Get the vertical of the investor
+        investor_vertical = investor_df['vertical'].iloc[0]
+
+        # Filter the dataframe based on the vertical and exclude undisclosed investors
+        vertical_df = self.startup[(self.startup['vertical'] == investor_vertical) &
+                                (~self.startup['investors'].str.contains('Undisclosed Investors', case=False))]
+
+        # Exclude the investor from the list
+        vertical_df = vertical_df[vertical_df['investors'] != investor_name]
+
+        # Count the occurrences of each investor
+        # print(sorted(vertical_df['investors'].str.split(','))[:5])
+        nested_list = sorted(vertical_df['investors'].str.split(','))
+        flattened_list = list(itertools.chain.from_iterable(nested_list))
+        try:
+            return random.sample(flattened_list, 3)
+        except ValueError:
+            return flattened_list
