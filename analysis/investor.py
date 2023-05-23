@@ -37,5 +37,5 @@ class Investor:
         return startup[startup['investors'].str.contains(investor_name)].groupby('city')['amount'].sum().reset_index()
     
     def invested_type(self,investor_name):
-            return startup[startup['investors'].str.contains(investor_name)].groupby('type')['amount'].sum().reset_index()
+        return startup[startup['investors'].str.contains(investor_name)].groupby('type')['amount'].sum().reset_index()
     
