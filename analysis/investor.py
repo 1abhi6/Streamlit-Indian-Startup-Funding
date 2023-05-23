@@ -26,16 +26,16 @@ class Investor:
    
     # Highest investment made by an Investor
     def biggest_investment(self,investor_name):
-        return self.startup[self.startup['investors'].str.contains(investor_name)].groupby('name')['amount'].sum().sort_values(ascending=False).head()
+        return self.startup[self.startup['investors'].str.contains(investor_name)].groupby('name')['amount'].sum().sort_values(ascending=False).head().reset_index()
     
     # Sector invested in
     def invested_sector(self,investor_name):
-        return startup[startup['investors'].str.contains(investor_name)].groupby('vertical')['amount'].sum()
+        return startup[startup['investors'].str.contains(investor_name)].groupby('vertical')['amount'].sum().reset_index()
     
     # City invested in
     def invested_city(self,investor_name):
-        return startup[startup['investors'].str.contains(investor_name)].groupby('city')['amount'].sum()
+        return startup[startup['investors'].str.contains(investor_name)].groupby('city')['amount'].sum().reset_index()
     
     def invested_type(self,investor_name):
-            return startup[startup['investors'].str.contains(investor_name)].groupby('type')['amount'].sum()
+            return startup[startup['investors'].str.contains(investor_name)].groupby('type')['amount'].sum().reset_index()
     

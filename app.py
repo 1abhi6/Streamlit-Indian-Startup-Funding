@@ -8,12 +8,14 @@ import streamlit as st
 
 from analysis import Investor as InvestorAnalysis
 from components import Investor as InvestorComponent
+from components import padding_top
 
 class Main:
     def __init__(self) -> None:
         self.investor_analysis = InvestorAnalysis()
         self.investor_component = InvestorComponent()
         self.home_component()
+        
 
     def home_component(self):
         # Page configuration
@@ -29,17 +31,21 @@ class Main:
             st.title('Startup Analysis')
         elif option == 'Investor':
             investor_name = st.sidebar.selectbox('Select Startup',self.investor_analysis.investor_list())
+            st.markdown(padding_top, unsafe_allow_html=True)
             btn1 = st.sidebar.button('Find Investor details')
-            st.title('Investor Detail')
+            st.markdown("<h1 style='text-align: center; color: white;'>Investor Detail</h1>", unsafe_allow_html=True)
+            st.title(investor_name)
+            st.divider()
             if btn1:
                 self.investor_component.recent_five_investments(investor_name)
+                st.divider()
                 col1 , col2 = st.columns(2)
                 with col1:
                     self.investor_component.plot_biggest_investment(investor_name)
                 with col2:
                     self.investor_component.plot_invested_sector(investor_name)
-                col3,col4 = st.columns(2)
                 st.divider()
+                col3,col4 = st.columns(2)
                 with col3:
                     self.investor_component.plot_invested_city(investor_name)
                 with col4:
