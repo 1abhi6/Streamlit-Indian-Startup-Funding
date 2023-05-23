@@ -2,12 +2,15 @@
 Module: Startup Analysis
 
 This module provides an interactive web application for analyzing startup funding data.
+
+Author: Abhishek Gupta
+Github: https://github.com/1abhi6
 """
 
 import streamlit as st
 from analysis import Investor as InvestorAnalysis
 from components import Investor as InvestorComponent
-from components import padding_top
+from components import PADDING_TOP
 
 class Main:
     """
@@ -59,7 +62,7 @@ class Main:
         investor_name = st.sidebar.selectbox(
             'Select Startup',
             self.investor_analysis.investor_list())
-        st.markdown(padding_top, unsafe_allow_html=True
+        st.markdown(PADDING_TOP, unsafe_allow_html=True
         )
 
         btn = st.sidebar.button('Find Investor details')

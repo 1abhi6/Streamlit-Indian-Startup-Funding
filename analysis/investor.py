@@ -195,7 +195,7 @@ class Investor:
         investor_vertical = investor_df['vertical'].iloc[0]
 
         vertical_df = self.startup[
-            (self.startup['vertical'] == investor_vertical) & 
+            (self.startup['vertical'] == investor_vertical) &
             (~self.startup['investors'].str.contains('Undisclosed Investors', case=False))
         ]
 
