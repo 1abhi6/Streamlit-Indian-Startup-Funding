@@ -2,6 +2,9 @@
 Module: Investor Analysis
 
 This module provides functionality to analyze investor data in the startup dataset.
+
+Author: Abhishek Gupta
+Github: https://github.com/1abhi6
 """
 
 import itertools
