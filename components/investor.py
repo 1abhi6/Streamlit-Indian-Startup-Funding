@@ -25,7 +25,7 @@ class Investor:
         st.plotly_chart(fig,use_container_width=True)
 
     def plot_invested_subsector(self,investor_name):
-        st.subheader('Sector Invested in',help=f"{investor_name}'s most invested subsector.")
+        st.subheader('Subsector Invested in',help=f"{investor_name}'s most invested subsector.")
         subsector_df = self.investor_analysis.invested_subsector(investor_name)
         fig = px.pie(subsector_df, values='amount', names='subvertical')
         st.plotly_chart(fig,use_container_width=True)
