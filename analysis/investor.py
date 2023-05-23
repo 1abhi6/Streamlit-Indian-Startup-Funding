@@ -32,10 +32,21 @@ class Investor:
     def invested_sector(self,investor_name):
         return startup[startup['investors'].str.contains(investor_name)].groupby('vertical')['amount'].sum().reset_index()
     
+    # Sub Sector invested in
+    def invested_subsector(self,investor_name):
+        return startup[startup['investors'].str.contains(investor_name)].groupby('subvertical')['amount'].sum().reset_index()
+    
     # City invested in
     def invested_city(self,investor_name):
         return startup[startup['investors'].str.contains(investor_name)].groupby('city')['amount'].sum().reset_index()
     
+    # Type of investment
     def invested_type(self,investor_name):
         return startup[startup['investors'].str.contains(investor_name)].groupby('type')['amount'].sum().reset_index()
+    
+    # Year on year investment
+    def yoy_investment(self,investor_name):
+        return startup[startup['investors'].str.contains(investor_name)].groupby('year')['amount'].sum().reset_index()
+    
+
     

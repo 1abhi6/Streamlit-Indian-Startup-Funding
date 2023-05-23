@@ -20,7 +20,7 @@ class Main:
     def home_component(self):
         # Page configuration
         st.set_page_config(layout='wide',page_title="Abhi's Startup Analysis",page_icon='📊')
-        st.sidebar.title('Startup Funding analysis')
+        st.sidebar.title('Startup Funding analysis',help='Note: This data used for this analysis about investment in Indian startups between 2015 to 2020')
         option = st.sidebar.selectbox('Select One',['Overall Analysis','Startup','Investor'])
 
         if option == 'Overall Analysis':
@@ -50,5 +50,11 @@ class Main:
                     self.investor_component.plot_invested_city(investor_name)
                 with col4:
                     self.investor_component.plot_invested_type(investor_name)
+                st.divider()
+                col5,col6 = st.columns(2)
+                with col5:
+                    self.investor_component.plot_yoy_investment(investor_name)
+                with col6:
+                    self.investor_component.plot_invested_subsector(investor_name)
                     
 Main()
