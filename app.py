@@ -72,7 +72,18 @@ class Main:
             st.write('')
         st.divider()
 
-        self.overall_component.total_funding_mom()
+        st.header('MoM Analysis')
+        st.divider()
+        selected_option = st.selectbox(
+            'Select Type of MoM chart',
+            ['Total Amount of Funding MoM','Total Funded Indian Startups MoM']
+        )
+
+        st.divider()
+        if selected_option == 'Total Amount of Funding MoM':
+            self.overall_component.plot_total_funding_mom()
+        else:
+            self.overall_component.plot_total_funded_startup_mom()
 
 
 

@@ -7,14 +7,22 @@ class Overall:
     def __init__(self):
         self.startup = startup
 
+
+    
     def total_funding_mom(self):
-        self.temp_df = startup.groupby(['year','month'])['amount'].sum().reset_index()
-        self.temp_df['MM-YYYY'] = self.temp_df['month'].astype('str') + '-' + self.temp_df['year'].astype('str')
-        self.temp_df.rename(columns = {
+        temp_df = startup.groupby(['year','month'])['amount'].sum().reset_index()
+        temp_df['MM-YYYY'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
+        temp_df.rename(columns = {
             'amount' : 'Total Funding (In Crore Rs.)'
         },inplace=True)
 
-        return self.temp_df
+        return temp_df
     
-    def number_of_funding_mom(self):
-        pass
+    def total_funded_startup_mom(self):
+        temp_df = startup.groupby(['year','month'])['amount'].count().reset_index()
+        temp_df['MM-YYYY'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
+        temp_df.rename(columns = {
+            'amount' : 'Total Funded Startups'
+        },inplace=True)
+
+        return temp_df
