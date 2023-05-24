@@ -136,3 +136,18 @@ class Overall:
 
         st.plotly_chart(fig,use_container_width=True)
 
+    def plot_top_investors(self):
+        top_investors = self.overall_analysis.top_investors()
+
+        SubHeader(
+            title='Top Investors',
+            tooltip='Top most investors on the basis of their invesment values.'
+        )
+
+        PlotHorizontalBarChart(
+            x_axis=top_investors['amount'],
+            y_axis=top_investors['investors'],
+            layout_title='Top Most Investors',
+            layout_x_axis='Funding Amount (In Crore Rs)',
+            layout_yaxis='Investor'
+        )
