@@ -103,6 +103,9 @@ class Main:
             self.overall_component.plot_total_funding_mom()
         else:
             self.overall_component.plot_total_funded_startup_mom()
+ 
+        st.divider()
+        self.overall_component.plot_most_funded_sector()
 
 
 
