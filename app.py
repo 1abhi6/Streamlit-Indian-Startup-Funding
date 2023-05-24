@@ -110,6 +110,9 @@ class Main:
         st.divider()
         self.overall_component.plot_most_funded_type()
 
+        st.divider()
+        self.overall_component.plot_most_funded_cities()
+
 
 
 

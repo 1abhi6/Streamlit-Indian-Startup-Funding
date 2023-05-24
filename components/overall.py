@@ -103,3 +103,19 @@ class Overall:
             layout_yaxis='Type of Investment'
         )
 
+    def plot_most_funded_cities(self):
+        most_funded_city = self.overall_analysis.most_funded_cities()
+
+        SubHeader(
+            title='Most Funded Cities',
+            tooltip='Top 10 most funded cities in startup funding'
+        )
+
+        PlotHorizontalBarChart(
+            x_axis=most_funded_city['amount'],
+            y_axis=most_funded_city['city'],
+            layout_title='Most Funded Cities',
+            layout_x_axis='Funding Amount (In Crore Rs)',
+            layout_yaxis='City'
+        )
+
