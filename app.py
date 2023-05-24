@@ -107,6 +107,9 @@ class Main:
         st.divider()
         self.overall_component.plot_most_funded_sector()
 
+        st.divider()
+        self.overall_component.plot_most_funded_type()
+
 
 
 

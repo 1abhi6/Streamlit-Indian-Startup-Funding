@@ -78,7 +78,7 @@ class Overall:
             title='Most Funded Sectors',
             tooltip='Top 10 Most Funded Sectors between 2015 to 2020'
         )
-        
+
         PlotHorizontalBarChart(
             x_axis=most_funded_sectors['amount'],
             y_axis=most_funded_sectors['vertical'],
@@ -86,3 +86,20 @@ class Overall:
             layout_x_axis='Funding Amount (In Crore Rs)',
             layout_yaxis='Sector'
         )
+
+    def plot_most_funded_type(self):
+        most_funded_type = self.overall_analysis.most_funded_type()
+
+        SubHeader(
+            title='Most Funded Type',
+            tooltip='Top 10 most funded type of round in startup funding'
+        )
+
+        PlotHorizontalBarChart(
+            x_axis=most_funded_type['amount'],
+            y_axis=most_funded_type['type'],
+            layout_title='Top 10 Most Funded Types of Rounds',
+            layout_x_axis='Funding Amount (In Crore Rs)',
+            layout_yaxis='Type of Investment'
+        )
+
