@@ -112,4 +112,11 @@ class Overall:
         top_investors = top_investors.sort_values(by='amount',ascending=False).head(10)
         return top_investors
 
+    def funding_amount_year_month(self):
+        # Aggregate funding amount by year and month
+        df_agg = startup.groupby(['year', 'month'])['amount'].sum().reset_index()
 
+        # Create pivot table
+        pivot_table = df_agg.pivot(index='year', columns='month', values='amount')
+
+        return pivot_table
