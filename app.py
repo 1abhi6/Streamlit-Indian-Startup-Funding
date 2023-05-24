@@ -47,7 +47,7 @@ class Main:
         option = st.sidebar.selectbox('Select One', ['Overall Analysis', 'Startup', 'Investor'])
 
         if option == 'Overall Analysis':
-            st.title('Overall Analysis')
+            self.overall()
         elif option == 'Startup':
             st.sidebar.selectbox('Select Startup', ['Ola', 'Unacademy'])
             # btn1 = st.sidebar.button('Find Startup details')
@@ -55,10 +55,26 @@ class Main:
         elif option == 'Investor':
             self.investor()
 
+    def overall(self):
+
+        # Make title center
+        head_col_0,head_col_1,head_col_2 = st.columns(3)
+        with head_col_0:
+            st.write('')
+        with head_col_1:
+            st.header('Overall Analysis')
+        with head_col_2:
+            st.write('')
+        st.divider()
+
+        # Display overall analysis
+
     def investor(self):
         """
         Render the investor analysis component.
         """
+
+        # Get the investor name
         investor_name = st.sidebar.selectbox(
             'Select Startup',
             self.investor_analysis.investor_list())
@@ -67,6 +83,7 @@ class Main:
 
         btn = st.sidebar.button('Find Investor details')
 
+        # Make title center
         head_col_0,head_col_1,head_col_2 = st.columns(3)
         with head_col_0:
             st.write('')
@@ -79,6 +96,7 @@ class Main:
         st.title(investor_name)
         st.divider()
 
+        # Display the investor details
         if btn:
             self.investor_component.recent_five_investments(investor_name)
             st.divider()
