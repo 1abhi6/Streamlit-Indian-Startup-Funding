@@ -67,4 +67,14 @@ class Overall:
 
         return most_funded_city
     
+    def most_funded_startups_yoy(self):
+        most_funded_startup_yoy = startup.groupby(['year','name'])['amount'].sum().sort_values(ascending=False).reset_index().drop_duplicates('year',keep='first').sort_values(by='year')
+        most_funded_startup_yoy.rename(columns = {
+            'year' : 'Year',
+            'name':'StartUp Name',
+            'amount':'Amount (In Crore Rs)'
+        },inplace=True)
+
+        return most_funded_startup_yoy
+    
     
