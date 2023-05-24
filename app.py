@@ -122,9 +122,7 @@ class Main:
 
         st.divider()
         self.overall_component.plot_funding_amount_year_month()
-
-
-
+        
 
     def investor(self):
         """
