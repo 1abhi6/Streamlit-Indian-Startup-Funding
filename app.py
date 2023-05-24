@@ -111,6 +111,9 @@ class Main:
         self.overall_component.plot_most_funded_type()
 
         st.divider()
+        self.overall_component.plot_most_funded_startups_yoy()
+
+        st.divider()
         self.overall_component.plot_most_funded_cities()
 
 

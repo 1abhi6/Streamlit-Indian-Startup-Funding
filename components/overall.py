@@ -119,3 +119,20 @@ class Overall:
             layout_yaxis='City'
         )
 
+    def plot_most_funded_startups_yoy(self):
+        most_funded_startup_yoy = self.overall_analysis.most_funded_startups_yoy()
+
+        SubHeader(
+            title='Most Funded Startups YoY',
+            tooltip='Top 10 most funded startups in startup funding YoY'
+        )
+
+        fig = px.bar(
+            most_funded_startup_yoy,
+            x='StartUp Name',
+            y='Amount (In Crore Rs)',
+            color='Year'
+        )
+
+        st.plotly_chart(fig,use_container_width=True)
+
