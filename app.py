@@ -67,10 +67,15 @@ class Main:
 
         btn = st.sidebar.button('Find Investor details')
 
-        st.markdown(
-            "<h1 style='text-align: center; color: white;'>Investor Detail</h1>",
-            unsafe_allow_html=True
-        )
+        head_col_0,head_col_1,head_col_2 = st.columns(3)
+        with head_col_0:
+            st.write('')
+        with head_col_1:
+            st.header('Investor Detail')
+        with head_col_2:
+            st.write('')
+        
+        st.divider()
 
         st.title(investor_name)
         st.divider()
