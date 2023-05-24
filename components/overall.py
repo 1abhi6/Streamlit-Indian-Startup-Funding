@@ -1,3 +1,22 @@
+"""
+Module: Overall Analysis Component
+
+This module provides classes for analyzing and visualizing data related to Indian startup funding.
+It utilizes the Streamlit library for creating an interactive web-based dashboard.
+
+Classes:
+- PlotHorizontalBarChart: Class for plotting a horizontal bar chart.
+- PlotLineChart: Class for plotting a line chart.
+- SubHeader: Class for displaying a subheader with a tooltip.
+- Overall: Class for handling overall analysis and plotting of startup data.
+
+The module also imports the `Overall` class from the `analysis` module,
+which contains the actual data analysis functions.
+
+Author: Abhishek Gupta
+Github: https://github.com/1abhi6
+"""
+
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
@@ -7,7 +26,19 @@ from analysis import Overall as OverallAnalysis
 
 
 class PlotHorizontalBarChart:
-    def __init__(self,x_axis:pd.Series,y_axis:pd.Series,layout_title,layout_x_axis:str,layout_yaxis:str) -> None:
+    """Class to plot a horizontal bar chart."""
+
+    def __init__(self, x_axis: pd.Series, y_axis: pd.Series, layout_title, layout_x_axis: str, layout_yaxis: str) -> None:
+        """
+        Initialize the PlotHorizontalBarChart class.
+
+        Args:
+            x_axis (pd.Series): The x-axis data.
+            y_axis (pd.Series): The y-axis data.
+            layout_title: The title of the chart.
+            layout_x_axis: The label for the x-axis.
+            layout_yaxis: The label for the y-axis.
+        """
         fig = go.Figure(data=go.Bar(
             x=x_axis,
             y=y_axis,
@@ -20,10 +51,22 @@ class PlotHorizontalBarChart:
             yaxis=dict(title=layout_yaxis)
         )
 
-        st.plotly_chart(fig,use_container_width=True)
-    
+        st.plotly_chart(fig, use_container_width=True)
+
+
 class PlotLineChart:
-    def __init__(self,temp_df:str,x_axis:str,y_axis:str,layout_title:str) -> None:
+    """Class to plot a line chart."""
+
+    def __init__(self, temp_df: str, x_axis: str, y_axis: str, layout_title: str) -> None:
+        """
+        Initialize the PlotLineChart class.
+
+        Args:
+            temp_df (str): The dataframe containing the chart data.
+            x_axis (str): The column name for the x-axis.
+            y_axis (str): The column name for the y-axis.
+            layout_title (str): The title of the chart.
+        """
         fig = px.line(
             temp_df,
             x=x_axis,
@@ -31,17 +74,32 @@ class PlotLineChart:
             title=layout_title
         )
 
-        st.plotly_chart(fig,use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True)
+
 
 class SubHeader:
-    def __init__(self,title:str,tooltip:str) -> None:
+    """Class to display a subheader with a tooltip."""
+
+    def __init__(self, title: str, tooltip: str) -> None:
+        """
+        Initialize the SubHeader class.
+
+        Args:
+            title (str): The title of the subheader.
+            tooltip (str): The tooltip text.
+        """
         st.subheader(title, help=tooltip)
 
+
 class Overall:
+    """Class to handle overall analysis and plotting of startup data."""
+
     def __init__(self) -> None:
+        """Initialize the Overall class."""
         self.overall_analysis = OverallAnalysis()
 
     def plot_total_funding_mom(self):
+        """Plot the total amount of funding in Indian startups month over month."""
         temp_df = self.overall_analysis.total_funding_mom()
 
         SubHeader(
@@ -57,6 +115,7 @@ class Overall:
         )
 
     def plot_total_funded_startup_mom(self):
+        """Plot the total number of funded Indian startups month over month."""
         temp_df = self.overall_analysis.total_funded_startup_mom()
 
         SubHeader(
@@ -72,6 +131,7 @@ class Overall:
         )
 
     def plot_most_funded_sector(self):
+        """Plot the top 10 most funded sectors between 2015 to 2020."""
         most_funded_sectors = self.overall_analysis.most_funded_sector()
 
         SubHeader(
@@ -88,6 +148,7 @@ class Overall:
         )
 
     def plot_most_funded_type(self):
+        """Plot the top 10 most funded types of rounds in startup funding."""
         most_funded_type = self.overall_analysis.most_funded_type()
 
         SubHeader(
@@ -104,6 +165,7 @@ class Overall:
         )
 
     def plot_most_funded_cities(self):
+        """Plot the top 10 most funded cities in startup funding."""
         most_funded_city = self.overall_analysis.most_funded_cities()
 
         SubHeader(
@@ -120,6 +182,7 @@ class Overall:
         )
 
     def plot_most_funded_startups_yoy(self):
+        """Plot the top 10 most funded startups year over year."""
         most_funded_startup_yoy = self.overall_analysis.most_funded_startups_yoy()
 
         SubHeader(
@@ -134,14 +197,15 @@ class Overall:
             color='Year'
         )
 
-        st.plotly_chart(fig,use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True)
 
     def plot_top_investors(self):
+        """Plot the top investors based on their investment values."""
         top_investors = self.overall_analysis.top_investors()
 
         SubHeader(
             title='Top Investors',
-            tooltip='Top most investors on the basis of their invesment values.'
+            tooltip='Top most investors on the basis of their investment values.'
         )
 
         PlotHorizontalBarChart(
@@ -153,6 +217,7 @@ class Overall:
         )
 
     def plot_funding_amount_year_month(self):
+        """Plot the funding amount by year and month."""
         pivot_table = self.overall_analysis.funding_amount_year_month()
 
         SubHeader(
@@ -170,9 +235,9 @@ class Overall:
 
         layout = go.Layout(
             title='Funding Amount by Year and Month',
-            xaxis={'title':'Month'},
-            yaxis={'title':'Year'}
+            xaxis={'title': 'Month'},
+            yaxis={'title': 'Year'}
         )
 
         fig = go.Figure(data=[heatmap], layout=layout)
-        st.plotly_chart(fig,use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True)
