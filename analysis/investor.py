@@ -204,6 +204,6 @@ class Investor:
         nested_list = sorted(vertical_df['investors'].str.split(','))
         flattened_list = list(itertools.chain.from_iterable(nested_list))
         try:
-            return random.sample(flattened_list, 3)
+            return random.sample(flattened_list, 4)
         except ValueError:
             return flattened_list

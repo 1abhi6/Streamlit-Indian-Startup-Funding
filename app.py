@@ -122,6 +122,21 @@ class Main:
                 self.investor_component.plot_yoy_investment(investor_name)
             st.divider()
 
-            self.investor_component.get_similar_investors(investor_name)
+            similar_investors = self.investor_analysis.get_similar_investors(investor_name)
+
+            st.subheader(
+                'Similar Investors',
+                help=f"These investors have invested in the same sectors as {investor_name}."
+            )
+            st.write('')
+            col7,col8,col9,col10 = st.columns(4)
+            with col7:
+                st.write(similar_investors[0])
+            with col8:
+                st.write(similar_investors[1])
+            with col9:
+                st.write(similar_investors[2])
+            with col10:
+                st.write(similar_investors[3])
 
 Main()
