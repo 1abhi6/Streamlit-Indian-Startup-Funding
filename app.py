@@ -14,6 +14,7 @@ from analysis import Overall as OverallAnalysis
 from components import Overall as OverallComponent
 from components import PADDING_TOP
 
+
 class Main:
     """
     Main class for the Startup Analysis application.
@@ -21,11 +22,14 @@ class Main:
     Attributes:
         investor_analysis (InvestorAnalysis): An instance of the InvestorAnalysis class.
         investor_component (InvestorComponent): An instance of the InvestorComponent class.
+        overall_analysis (OverallAnalysis): An instance of the OverallAnalysis class.
+        overall_component (OverallComponent): An instance of the OverallComponent class.
 
     Methods:
         __init__: Initializes the Main class.
         home_component: Renders the home component based on the user's selection.
         investor: Renders the investor analysis component.
+        overall: Renders the overall analysis component.
     """
 
     def __init__(self) -> None:
@@ -60,12 +64,15 @@ class Main:
             self.investor()
 
     def overall(self):
+        """
+        Render the overall analysis component.
+        """
 
         # Give custom padding at top
-        st.markdown(PADDING_TOP,unsafe_allow_html=True)
+        st.markdown(PADDING_TOP, unsafe_allow_html=True)
 
         # Make title center
-        head_col_0,head_col_1,head_col_2 = st.columns(3)
+        head_col_0, head_col_1, head_col_2 = st.columns(3)
         with head_col_0:
             st.write('')
         with head_col_1:
@@ -74,20 +81,20 @@ class Main:
             st.write('')
         st.divider()
 
-        st.header('MoM Analysis',help='Analysis on the basis of month for quick overview.')
+        st.header('MoM Analysis', help='Analysis on the basis of month for quick overview.')
         st.divider()
-        col1,col2,col3,col4 = st.columns(4)
+        col1, col2, col3, col4 = st.columns(4)
 
         with col1:
-            st.metric('Total',str(self.overall_analysis.total_invested_amount()) + ' Cr',delta='50 Cr')
+            st.metric('Total', str(self.overall_analysis.total_invested_amount()) + ' Cr', delta='50 Cr')
         with col2:
             st.metric('Maximum', str(self.overall_analysis.max_amount_infused()) + ' Cr')
 
         with col3:
-            st.metric('Average',str(round(self.overall_analysis.avg_ticket_size())) + ' Cr',delta='20 Cr')
+            st.metric('Average', str(round(self.overall_analysis.avg_ticket_size())) + ' Cr', delta='20 Cr')
 
         with col4:
-            st.metric('Total Funded Startups',self.overall_analysis.total_funded_startup(),delta='10')
+            st.metric('Total Funded Startups', self.overall_analysis.total_funded_startup(), delta='10')
 
         st.divider()
         st.header('MoM Graph')
@@ -95,7 +102,7 @@ class Main:
 
         selected_option = st.selectbox(
             'Select Type of MoM chart',
-            ['Total Amount of Funding MoM','Total Funded Indian Startups MoM']
+            ['Total Amount of Funding MoM', 'Total Funded Indian Startups MoM']
         )
 
         st.divider()
@@ -103,13 +110,12 @@ class Main:
             self.overall_component.plot_total_funding_mom()
         else:
             self.overall_component.plot_total_funded_startup_mom()
- 
+
         st.divider()
         self.overall_component.plot_most_funded_sector()
 
         st.divider()
         self.overall_component.plot_top_investors()
-
 
         st.divider()
         self.overall_component.plot_most_funded_startups_yoy()
@@ -122,7 +128,6 @@ class Main:
 
         st.divider()
         self.overall_component.plot_funding_amount_year_month()
-        
 
     def investor(self):
         """
@@ -132,7 +137,8 @@ class Main:
         # Get the investor name
         investor_name = st.sidebar.selectbox(
             'Select Startup',
-            self.investor_analysis.investor_list())
+            self.investor_analysis.investor_list()
+        )
 
         btn = st.sidebar.button('Find Investor details')
 
@@ -140,7 +146,7 @@ class Main:
         st.markdown(PADDING_TOP, unsafe_allow_html=True)
 
         # Make title center
-        head_col_0,head_col_1,head_col_2 = st.columns(3)
+        head_col_0, head_col_1, head_col_2 = st.columns(3)
         with head_col_0:
             st.write('')
         with head_col_1:
@@ -185,7 +191,7 @@ class Main:
                 help=f"These investors have invested in the same sectors as {investor_name}."
             )
             st.write('')
-            col7,col8,col9,col10 = st.columns(4)
+            col7, col8, col9, col10 = st.columns(4)
             with col7:
                 st.write(similar_investors[0])
             with col8:
@@ -194,5 +200,6 @@ class Main:
                 st.write(similar_investors[2])
             with col10:
                 st.write(similar_investors[3])
+
 
 Main()
