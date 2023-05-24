@@ -51,4 +51,20 @@ class Overall:
 
         return most_funded_type
     
+    def most_funded_cities(self):
+        temp_df = startup.groupby('city')['amount'].sum().reset_index()
+        most_funded_city = temp_df[temp_df['amount'] != 0]
+
+        # Add the amount of Bengaluru to Bangalore
+        most_funded_city.loc[most_funded_city['city'] == 'Bangalore', 'amount'] += most_funded_city.loc[most_funded_city['city'] == 'Bengaluru', 'amount'].values[0]
+
+        # Drop the Bengaluru row
+        most_funded_city = most_funded_city[most_funded_city['city'] != 'Bengaluru']
+
+        most_funded_city = most_funded_city.sort_values(by='amount',ascending=False).head(10)
+
+        most_funded_city['amount'] = round(most_funded_city['amount'],2)
+
+        return most_funded_city
+    
     
