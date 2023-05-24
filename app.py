@@ -108,7 +108,8 @@ class Main:
         self.overall_component.plot_most_funded_sector()
 
         st.divider()
-        self.overall_component.plot_most_funded_type()
+        self.overall_component.plot_top_investors()
+
 
         st.divider()
         self.overall_component.plot_most_funded_startups_yoy()
@@ -117,7 +118,7 @@ class Main:
         self.overall_component.plot_most_funded_cities()
 
         st.divider()
-        self.overall_component.plot_top_investors()
+        self.overall_component.plot_most_funded_type()
 
         st.divider()
         self.overall_component.plot_funding_amount_year_month()

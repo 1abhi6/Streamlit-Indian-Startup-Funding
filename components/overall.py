@@ -170,8 +170,8 @@ class Overall:
 
         layout = go.Layout(
             title='Funding Amount by Year and Month',
-            xaxis=dict(title='Month'),
-            yaxis=dict(title='Year')
+            xaxis={'title':'Month'},
+            yaxis={'title':'Year'}
         )
 
         fig = go.Figure(data=[heatmap], layout=layout)
