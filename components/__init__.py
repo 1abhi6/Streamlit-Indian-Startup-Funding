@@ -19,4 +19,5 @@ Github: https://github.com/1abhi6
 """
 
 from components.investor import Investor
+from components.overall import Overall
 from components.component_style.style_css import PADDING_TOP

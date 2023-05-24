@@ -67,7 +67,7 @@ class Main:
             st.write('')
         st.divider()
 
-        # Display overall analysis
+        
 
     def investor(self):
         """
