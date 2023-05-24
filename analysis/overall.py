@@ -77,4 +77,39 @@ class Overall:
 
         return most_funded_startup_yoy
     
-    
+    def top_investors(self):
+        # New dataframe with separate rows for each investor
+        investor_list = []
+        for _, row in startup.iterrows():
+            investors = row['investors'].split(', ')
+            for investor in investors:
+                investor_list.append({
+                    'date': row['date'],
+                    'name': row['name'],
+                    'vertical': row['vertical'],
+                    'subvertical': row['subvertical'],
+                    'city': row['city'],
+                    'investors': investor,
+                    'type': row['type'],
+                    'amount': row['amount'],
+                    'year': row['year'],
+                    'month': row['month']
+                })
+
+        new_df = pd.DataFrame(investor_list)
+
+        top_investors = new_df.groupby('investors')['amount'].sum().reset_index()
+
+        # Add the amounts of SoftBank Group and Softbank and store the result in SoftBank Group
+        softbank_group_amount = top_investors.loc[top_investors['investors'] == 'SoftBank Group', 'amount'].values[0]
+        softbank_amount = top_investors.loc[top_investors['investors'] == 'Softbank', 'amount'].values[0]
+        updated_amount = softbank_group_amount + softbank_amount
+        top_investors.loc[top_investors['investors'] == 'SoftBank Group', 'amount'] = updated_amount
+
+        # Drop the Softbank row
+        top_investors = top_investors[top_investors['investors'] != 'Softbank']
+
+        top_investors = top_investors.sort_values(by='amount',ascending=False).head(10)
+        return top_investors
+
+
