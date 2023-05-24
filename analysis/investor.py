@@ -3,6 +3,15 @@ Module: Investor Analysis
 
 This module provides functionality to analyze investor data in the startup dataset.
 
+
+Dependencies:
+- itertools
+- random
+- pandas (pd)
+- dataset (startup)
+
+Note: The `startup` dataset is imported from the `dataset` module.
+
 Author: Abhishek Gupta
 Github: https://github.com/1abhi6
 """
