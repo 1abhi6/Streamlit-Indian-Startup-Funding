@@ -74,7 +74,6 @@ class Main:
             st.header('Investor Detail')
         with head_col_2:
             st.write('')
-        
         st.divider()
 
         st.title(investor_name)

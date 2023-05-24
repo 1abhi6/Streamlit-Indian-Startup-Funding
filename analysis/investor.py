@@ -69,7 +69,7 @@ class Investor:
             'city': 'City',
             'investors': 'Investors',
             'type': 'Type',
-            'amount': 'Amount'
+            'amount': 'Amount (In crore ₹)'
         })
 
         return recent_investment
