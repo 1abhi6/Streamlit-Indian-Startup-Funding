@@ -10,6 +10,7 @@ Github: https://github.com/1abhi6
 import streamlit as st
 from analysis import Investor as InvestorAnalysis
 from components import Investor as InvestorComponent
+from analysis import Overall as OverallAnalysis
 from components import Overall as OverallComponent
 from components import PADDING_TOP
 
@@ -33,6 +34,7 @@ class Main:
         """
         self.investor_analysis = InvestorAnalysis()
         self.investor_component = InvestorComponent()
+        self.overall_analysis = OverallAnalysis()
         self.overall_component = OverallComponent()
         self.home_component()
 
@@ -72,8 +74,25 @@ class Main:
             st.write('')
         st.divider()
 
-        st.header('MoM Analysis')
+        st.header('MoM Analysis',help='Analysis on the basis of month for quick overview.')
         st.divider()
+        col1,col2,col3,col4 = st.columns(4)
+
+        with col1:
+            st.metric('Total',str(self.overall_analysis.total_invested_amount()) + ' Cr',delta='50 Cr')
+        with col2:
+            st.metric('Maximum', str(self.overall_analysis.max_amount_infused()) + ' Cr')
+
+        with col3:
+            st.metric('Average',str(round(self.overall_analysis.avg_ticket_size())) + ' Cr',delta='20 Cr')
+
+        with col4:
+            st.metric('Total Funded Startups',self.overall_analysis.total_funded_startup(),delta='10')
+
+        st.divider()
+        st.header('MoM Graph')
+        st.divider()
+
         selected_option = st.selectbox(
             'Select Type of MoM chart',
             ['Total Amount of Funding MoM','Total Funded Indian Startups MoM']

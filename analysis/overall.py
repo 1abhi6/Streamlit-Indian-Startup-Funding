@@ -7,7 +7,18 @@ class Overall:
     def __init__(self):
         self.startup = startup
 
-
+    def total_invested_amount(self):
+        return round(self.startup['amount'].sum())
+    
+    def max_amount_infused(self):
+        return self.startup.groupby('name')['amount'].max().sort_values(ascending=False).head(1).values[0]
+    
+    def avg_ticket_size(self):
+        return self.startup.groupby('name')['amount'].sum().mean()
+    
+    def total_funded_startup(self):
+        return self.startup['name'].nunique()
+    
     
     def total_funding_mom(self):
         temp_df = startup.groupby(['year','month'])['amount'].sum().reset_index()
