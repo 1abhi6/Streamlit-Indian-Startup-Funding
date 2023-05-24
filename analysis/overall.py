@@ -44,4 +44,11 @@ class Overall:
 
         return most_funded_sectors
     
+       
+    def most_funded_type(self):
+        temp_df = startup.groupby('type')['amount'].sum().reset_index()
+        most_funded_type = temp_df[temp_df['amount'] != 0.0].sort_values(by='amount',ascending=False).head(10)
+
+        return most_funded_type
+    
     
