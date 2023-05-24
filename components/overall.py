@@ -151,3 +151,28 @@ class Overall:
             layout_x_axis='Funding Amount (In Crore Rs)',
             layout_yaxis='Investor'
         )
+
+    def plot_funding_amount_year_month(self):
+        pivot_table = self.overall_analysis.funding_amount_year_month()
+
+        SubHeader(
+            title='Year and Month Funding',
+            tooltip='Heatmap to show the funding amount by year and month.'
+        )
+
+        # Plotting the heatmap
+        heatmap = go.Heatmap(
+            x=pivot_table.columns,
+            y=pivot_table.index,
+            z=pivot_table.values,
+            colorscale='Viridis'
+        )
+
+        layout = go.Layout(
+            title='Funding Amount by Year and Month',
+            xaxis=dict(title='Month'),
+            yaxis=dict(title='Year')
+        )
+
+        fig = go.Figure(data=[heatmap], layout=layout)
+        st.plotly_chart(fig,use_container_width=True)

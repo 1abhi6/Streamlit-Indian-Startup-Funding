@@ -119,6 +119,9 @@ class Main:
         st.divider()
         self.overall_component.plot_top_investors()
 
+        st.divider()
+        self.overall_component.plot_funding_amount_year_month()
+
 
 
 
