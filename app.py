@@ -10,6 +10,7 @@ Github: https://github.com/1abhi6
 import streamlit as st
 from analysis import Investor as InvestorAnalysis
 from components import Investor as InvestorComponent
+from components import Overall as OverallComponent
 from components import PADDING_TOP
 
 class Main:
@@ -32,6 +33,7 @@ class Main:
         """
         self.investor_analysis = InvestorAnalysis()
         self.investor_component = InvestorComponent()
+        self.overall_component = OverallComponent()
         self.home_component()
 
     def home_component(self):
@@ -57,6 +59,9 @@ class Main:
 
     def overall(self):
 
+        # Give custom padding at top
+        st.markdown(PADDING_TOP,unsafe_allow_html=True)
+
         # Make title center
         head_col_0,head_col_1,head_col_2 = st.columns(3)
         with head_col_0:
@@ -67,7 +72,10 @@ class Main:
             st.write('')
         st.divider()
 
-        
+        self.overall_component.total_funding_mom()
+
+
+
 
     def investor(self):
         """
@@ -78,10 +86,11 @@ class Main:
         investor_name = st.sidebar.selectbox(
             'Select Startup',
             self.investor_analysis.investor_list())
-        st.markdown(PADDING_TOP, unsafe_allow_html=True
-        )
 
         btn = st.sidebar.button('Find Investor details')
+
+        # Give custom padding at top
+        st.markdown(PADDING_TOP, unsafe_allow_html=True)
 
         # Make title center
         head_col_0,head_col_1,head_col_2 = st.columns(3)
