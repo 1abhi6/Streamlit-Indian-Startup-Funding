@@ -19,3 +19,5 @@ class Startup:
     def stage(self,startup_name):
         return self.startup[self.startup['name'] == startup_name]['type'].values[0]
     
+    def list_of_investors(self,startup_name):
+        return self.startup[self.startup['name'] == startup_name]['investors'].values[0]
