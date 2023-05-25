@@ -3,6 +3,13 @@ Module: Startup Analysis
 
 This module provides an interactive web application for analyzing startup funding data.
 
+Dependencies:
+- streamlit (st)
+- analysis (Investor,Overall,Startup)
+- components (Investor,Overall,Startup)
+
+Note: The `analysis` and `components` are imported from the `analysis` and `components` module.
+
 Author: Abhishek Gupta
 Github: https://github.com/1abhi6
 """
