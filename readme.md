@@ -97,13 +97,13 @@ To run the web application locally, follow these steps:
 
 4. Install the required Python packages by running the following command:
 
-   ```
+   ```shell
    pip install -r requirements.txt
    ```
 
 5. Once the dependencies are installed, start the application by running the following command:
 
-   ```
+   ```shell
    streamlit run app.py
    ```
 
