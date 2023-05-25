@@ -88,7 +88,8 @@ class Overall:
         Calculates the total number of funded startups on a month-by-month basis.
 
         Returns:
-            pandas.DataFrame: DataFrame containing the total number of funded startups for each month.
+            pandas.DataFrame: DataFrame containing the total number of funded startups for each
+            month.
         """
         temp_df = startup.groupby(['year', 'month'])['amount'].count().reset_index()
         temp_df['MM-YYYY'] = temp_df['month'].astype('str') + '-' + temp_df['year'].astype('str')
@@ -98,7 +99,7 @@ class Overall:
         }, inplace=True)
 
         return temp_df
-    
+
     def most_funded_sector(self):
         """
         Finds the sectors with the highest total funding amounts.
@@ -108,29 +109,38 @@ class Overall:
             their corresponding amounts.
         """
         temp_df = startup.groupby('vertical')['amount'].sum().reset_index()
-        most_funded_sectors = temp_df[temp_df['amount'] != 0.0].sort_values(by='amount', ascending=False).head(10)
+        most_funded_sectors = temp_df[temp_df['amount'] != 0.0].sort_values(
+            by='amount',
+            ascending=False
+        ).head(10)
+
         most_funded_sectors['amount'] = round(most_funded_sectors['amount'], 2)
 
         return most_funded_sectors
-    
+
     def most_funded_type(self):
         """
         Finds the startup types with the highest total funding amounts.
 
         Returns:
-            pandas.DataFrame: DataFrame containing the most funded startup types and their corresponding amounts.
+            pandas.DataFrame: DataFrame containing the most funded startup types and
+            their corresponding amounts.
         """
         temp_df = startup.groupby('type')['amount'].sum().reset_index()
-        most_funded_type = temp_df[temp_df['amount'] != 0.0].sort_values(by='amount', ascending=False).head(10)
+        most_funded_type = temp_df[temp_df['amount'] != 0.0].sort_values(
+            by='amount',
+            ascending=False
+        ).head(10)
 
         return most_funded_type
-    
+
     def most_funded_cities(self):
         """
         Finds the cities with the highest total funding amounts.
 
         Returns:
-            pandas.DataFrame: DataFrame containing the most funded cities and their corresponding amounts.
+            pandas.DataFrame: DataFrame containing the most funded cities and
+            their corresponding amounts.
         """
         temp_df = startup.groupby('city')['amount'].sum().reset_index()
         most_funded_city = temp_df[temp_df['amount'] != 0]
@@ -146,16 +156,21 @@ class Overall:
         most_funded_city['amount'] = round(most_funded_city['amount'], 2)
 
         return most_funded_city
-    
+
     def most_funded_startups_yoy(self):
         """
         Finds the startups with the highest funding amounts on a year-over-year basis.
 
         Returns:
-            pandas.DataFrame: DataFrame containing the most funded startups for each year and their corresponding amounts.
+            pandas.DataFrame: DataFrame containing the most funded startups for
+            each year and their corresponding amounts.
         """
         most_funded_startup_yoy = startup.groupby(['year', 'name'])['amount'].sum() \
-            .sort_values(ascending=False).reset_index().drop_duplicates('year', keep='first').sort_values(by='year')
+            .sort_values(ascending=False).reset_index().drop_duplicates(
+            'year',
+            keep='first'
+        ).sort_values(by='year')
+
         most_funded_startup_yoy.rename(columns={
             'year': 'Year',
             'name': 'StartUp Name',
@@ -163,13 +178,14 @@ class Overall:
         }, inplace=True)
 
         return most_funded_startup_yoy
-    
+
     def top_investors(self):
         """
         Finds the top investors based on their total investment amounts.
 
         Returns:
-            pandas.DataFrame: DataFrame containing the top investors and their corresponding amounts.
+            pandas.DataFrame: DataFrame containing the top investors and
+            their corresponding amounts.
         """
         # New dataframe with separate rows for each investor
         investor_list = []
@@ -194,8 +210,14 @@ class Overall:
         top_investors = new_df.groupby('investors')['amount'].sum().reset_index()
 
         # Add the amounts of SoftBank Group and Softbank and store the result in SoftBank Group
-        softbank_group_amount = top_investors.loc[top_investors['investors'] == 'SoftBank Group', 'amount'].values[0]
-        softbank_amount = top_investors.loc[top_investors['investors'] == 'Softbank', 'amount'].values[0]
+        softbank_group_amount = top_investors.loc[
+            top_investors['investors'] == 'SoftBank Group', 'amount'
+        ].values[0]
+
+        softbank_amount = top_investors.loc[
+            top_investors['investors'] == 'Softbank', 'amount'
+        ].values[0]
+
         updated_amount = softbank_group_amount + softbank_amount
         top_investors.loc[top_investors['investors'] == 'SoftBank Group', 'amount'] = updated_amount
 

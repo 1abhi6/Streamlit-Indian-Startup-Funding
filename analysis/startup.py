@@ -3,6 +3,9 @@ Module: Startup Analysis
 
 This module provides classes and methods for analyzing startup data.
 
+Dependencies:
+- pandas (pd)
+
 Author: Abhishek Gupta
 Github: https://github.com/1abhi6
 """
