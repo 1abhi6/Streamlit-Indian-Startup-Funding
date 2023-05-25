@@ -8,7 +8,7 @@ Github: https://github.com/1abhi6
 """
 
 import streamlit as st
-from analysis import Investor as InvestorAnalysis, Overall as OverallAnalysis
+from analysis import Investor as InvestorAnalysis, Overall as OverallAnalysis, Startup as StartupAnalysis
 from components import Investor as InvestorComponent, Overall as OverallComponent, Startup as StartupComponent
 # from analysis import Overall as OverallAnalysis
 # from components import Overall as OverallComponent
@@ -40,6 +40,7 @@ class Main:
         self.investor_component = InvestorComponent()
         self.overall_analysis = OverallAnalysis()
         self.overall_component = OverallComponent()
+        self.startup_analysis = StartupAnalysis()
         self.startup_component = StartupComponent()
         self.home_component()
 
@@ -58,7 +59,6 @@ class Main:
         if option == 'Overall Analysis':
             self.overall()
         elif option == 'Startup':
-            st.title('Startup Analysis')
             self.startup()
         elif option == 'Investor':
             self.investor()
@@ -133,7 +133,39 @@ class Main:
         startup_name = st.sidebar.selectbox('Select Startup', ['Ola', 'Unacademy'])
         btn = st.sidebar.button('Find Startup details')
 
+        # Give custom padding at top
+        st.markdown(PADDING_TOP, unsafe_allow_html=True)
+
+        # Make title center
+        head_col_0, head_col_1, head_col_2 = st.columns(3)
+        with head_col_0:
+            st.write('')
+        with head_col_1:
+            st.header('Startup Analysis')
+        with head_col_2:
+            st.write('')
+        st.divider()
+
         if btn:
+            st.subheader(startup_name + ' ' + 'Analysis',
+                        help=f'Overall analysis of {startup_name}'
+            )
+            st.divider()
+
+            col0,col1 = st.columns(2)
+            with col0:
+                st.metric('Sector',self.startup_analysis.sector(startup_name))
+            with col1:
+                st.metric('Subsector',self.startup_analysis.subsector(startup_name))
+
+            st.divider()
+            col3,col4 = st.columns(2)
+            with col3:
+                st.metric('Stage',self.startup_analysis.stage(startup_name))
+            with col4:
+                st.metric('Investors',self.startup_analysis.investors(startup_name))
+
+            st.divider()
             self.startup_component.similar_startups(startup_name)
 
 

@@ -148,6 +148,14 @@ class Investor:
         st.plotly_chart(fig, use_container_width=True)
 
     def similar_investors(self,investor_name):
+        """Displays the name of four random investors.
+
+        Args:
+            investor_name (str): The name of the investor.
+
+        Returns:
+            None
+        """
         similar_investors = self.investor_analysis.get_similar_investors(investor_name)
 
         st.subheader(
