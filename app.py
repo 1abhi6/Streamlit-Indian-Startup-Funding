@@ -9,12 +9,18 @@ Github: https://github.com/1abhi6
 
 import streamlit as st
 
-from analysis import Investor as InvestorAnalysis
-from components import Investor as InvestorComponent
-from analysis import Overall as OverallAnalysis
-from components import Overall as OverallComponent
-from analysis import Startup as StartupAnalysis
-from components import Startup as StartupComponent
+from analysis import (
+    Investor as InvestorAnalysis,
+    Overall as OverallAnalysis,
+    Startup as StartupAnalysis
+)
+
+from components import (
+    Investor as InvestorComponent,
+    Overall as OverallComponent,
+    Startup as StartupComponent
+)
+
 from components import PADDING_TOP
 
 
@@ -27,12 +33,15 @@ class Main:
         investor_component (InvestorComponent): An instance of the InvestorComponent class.
         overall_analysis (OverallAnalysis): An instance of the OverallAnalysis class.
         overall_component (OverallComponent): An instance of the OverallComponent class.
+        startup_analysis (StartupAnalysis): An instance of the StartupAnalysis class.
+        startup_component (StartupComponent): An instance of the StartupComponent class.
 
     Methods:
         __init__: Initializes the Main class.
         home_component: Renders the home component based on the user's selection.
         investor: Renders the investor analysis component.
         overall: Renders the overall analysis component.
+        startup: Renders the startup analysis component.
     """
 
     def __init__(self) -> None:
@@ -89,15 +98,30 @@ class Main:
         col1, col2, col3, col4 = st.columns(4)
 
         with col1:
-            st.metric('Total', str(self.overall_analysis.total_invested_amount()) + ' Cr', delta='50 Cr')
+            st.metric(
+                'Total',
+                str(self.overall_analysis.total_invested_amount()) + ' Cr',
+                delta='50 Cr'
+            )
         with col2:
-            st.metric('Maximum', str(self.overall_analysis.max_amount_infused()) + ' Cr')
+            st.metric(
+                'Maximum',
+                str(self.overall_analysis.max_amount_infused()) + ' Cr'
+            )
 
         with col3:
-            st.metric('Average', str(round(self.overall_analysis.avg_ticket_size())) + ' Cr', delta='20 Cr')
+            st.metric(
+                'Average',
+                str(round(self.overall_analysis.avg_ticket_size())) + ' Cr',
+                delta='20 Cr'
+            )
 
         with col4:
-            st.metric('Total Funded Startups', self.overall_analysis.total_funded_startup(), delta='10')
+            st.metric(
+                'Total Funded Startups',
+                self.overall_analysis.total_funded_startup(),
+                delta='10'
+            )
 
         st.divider()
         st.header('MoM Graph')
@@ -133,6 +157,9 @@ class Main:
         self.overall_component.plot_funding_amount_year_month()
 
     def startup(self):
+        """
+        Render the startup analysis component.
+        """
         startup_name = st.sidebar.selectbox(
             'Select Startup',
             self.startup_analysis.list_of_startups()
@@ -167,18 +194,18 @@ class Main:
                 )
             st.divider()
 
-            col0,col1 = st.columns(2)
+            col0, col1 = st.columns(2)
             with col0:
-                st.metric('Sector',self.startup_analysis.sector(startup_name))
+                st.metric('Sector', self.startup_analysis.sector(startup_name))
             with col1:
-                st.metric('Subsector',self.startup_analysis.subsector(startup_name))
+                st.metric('Subsector', self.startup_analysis.subsector(startup_name))
 
             st.divider()
-            col3,col4 = st.columns(2)
+            col3, col4 = st.columns(2)
             with col3:
-                st.metric('Stage',self.startup_analysis.stage(startup_name))
+                st.metric('Stage', self.startup_analysis.stage(startup_name))
             with col4:
-                st.metric('Investors',self.startup_analysis.investors(startup_name))
+                st.metric('Investors', self.startup_analysis.investors(startup_name))
 
             st.divider()
             self.startup_component.similar_startups(startup_name)
@@ -188,10 +215,9 @@ class Main:
         """
         Render the investor analysis component.
         """
-
         # Get the investor name
         investor_name = st.sidebar.selectbox(
-            'Select Startup',
+            'Select Investor',
             self.investor_analysis.investor_list()
         )
 
@@ -240,7 +266,6 @@ class Main:
             st.divider()
 
             self.investor_component.similar_investors(investor_name)
-            
 
 
 Main()
