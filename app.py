@@ -130,7 +130,10 @@ class Main:
         self.overall_component.plot_funding_amount_year_month()
 
     def startup(self):
-        startup_name = st.sidebar.selectbox('Select Startup', ['Ola', 'Unacademy'])
+        startup_name = st.sidebar.selectbox(
+            'Select Startup',
+            self.startup_analysis.list_of_startups()
+        )
         btn = st.sidebar.button('Find Startup details')
 
         # Give custom padding at top

@@ -3,6 +3,9 @@ from dataset import startup
 class Startup:
     def __init__(self):
         self.startup = startup
+    
+    def list_of_startups(self):
+        return list(startup['name'].sort_values().unique())[1:]
 
     def sector(self,startup_name):
         return self.startup[self.startup['name'] == startup_name]['vertical'].values[0]
