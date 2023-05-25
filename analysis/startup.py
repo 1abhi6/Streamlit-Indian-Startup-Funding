@@ -24,6 +24,10 @@ class Startup:
 
     def investment_date(self,startup_name):
         return self.startup[self.startup['name'] == startup_name]['date'].values[0]
+    
+    def funding(self,startup_name):
+        company = self.startup[self.startup['name'] == startup_name]
+        return company.groupby('name')['amount'].sum().values[0]
 
     def similar_startups(self,startup_name):
         vertical = startup.loc[startup['name'] == startup_name, 'vertical'].values[0]

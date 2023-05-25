@@ -8,10 +8,13 @@ Github: https://github.com/1abhi6
 """
 
 import streamlit as st
-from analysis import Investor as InvestorAnalysis, Overall as OverallAnalysis, Startup as StartupAnalysis
-from components import Investor as InvestorComponent, Overall as OverallComponent, Startup as StartupComponent
-# from analysis import Overall as OverallAnalysis
-# from components import Overall as OverallComponent
+
+from analysis import Investor as InvestorAnalysis
+from components import Investor as InvestorComponent
+from analysis import Overall as OverallAnalysis
+from components import Overall as OverallComponent
+from analysis import Startup as StartupAnalysis
+from components import Startup as StartupComponent
 from components import PADDING_TOP
 
 
@@ -150,9 +153,18 @@ class Main:
         st.divider()
 
         if btn:
-            st.subheader(startup_name + ' ' + 'Analysis',
-                        help=f'Overall analysis of {startup_name}'
-            )
+            subhead_col0, subhead_col1 = st.columns(2)
+
+            with subhead_col0:
+                st.subheader(startup_name + ' ' + 'Analysis',
+                            help=f'Overall analysis of {startup_name}'
+                )
+            with subhead_col1:
+                st.metric(
+                    'Investments (In Crore Rs)',
+                    self.startup_analysis.funding(startup_name),
+                    delta='+10'
+                )
             st.divider()
 
             col0,col1 = st.columns(2)
