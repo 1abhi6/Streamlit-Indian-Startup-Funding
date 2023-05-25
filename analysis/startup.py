@@ -16,3 +16,6 @@ class Startup:
     def location(self,startup_name):
         return self.startup[self.startup['name'] == startup_name]['city'].values[0]
     
+    def stage(self,startup_name):
+        return self.startup[self.startup['name'] == startup_name]['type'].values[0]
+    
