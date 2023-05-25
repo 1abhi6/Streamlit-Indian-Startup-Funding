@@ -7,7 +7,9 @@ class Startup:
     def __init__(self):
         self.startup = startup
 
-    def sector(self):
-        return self.startup[self.startup['name'] == 'Mamaearth']['vertical'].values[0]
+    def sector(self,startup_name):
+        return self.startup[self.startup['name'] == startup_name]['vertical'].values[0]
     
+    def subsector(self,startup_name);
+        return self.startup[self.startup['name'] == startup_name]['subvertical'].values[0]
     
