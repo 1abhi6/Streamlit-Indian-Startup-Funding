@@ -171,16 +171,16 @@ class Investor:
                 st.write('')
         with col1:
             try:
-                st.write(similar_investors[0])
+                st.write(similar_investors[1])
             except IndexError:
                 st.write('')
         with col2:
             try:
-                st.write(similar_investors[0])
+                st.write(similar_investors[2])
             except IndexError:
                 st.write('')
         with col3:
             try:
-                st.write(similar_investors[0])
+                st.write(similar_investors[3])
             except IndexError:
                 st.write('')
