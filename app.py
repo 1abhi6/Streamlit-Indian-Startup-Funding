@@ -8,10 +8,10 @@ Github: https://github.com/1abhi6
 """
 
 import streamlit as st
-from analysis import Investor as InvestorAnalysis
-from components import Investor as InvestorComponent
-from analysis import Overall as OverallAnalysis
-from components import Overall as OverallComponent
+from analysis import Investor as InvestorAnalysis, Overall as OverallAnalysis
+from components import Investor as InvestorComponent, Overall as OverallComponent, Startup as StartupComponent
+# from analysis import Overall as OverallAnalysis
+# from components import Overall as OverallComponent
 from components import PADDING_TOP
 
 
@@ -40,6 +40,7 @@ class Main:
         self.investor_component = InvestorComponent()
         self.overall_analysis = OverallAnalysis()
         self.overall_component = OverallComponent()
+        self.startup_component = StartupComponent()
         self.home_component()
 
     def home_component(self):
@@ -57,9 +58,8 @@ class Main:
         if option == 'Overall Analysis':
             self.overall()
         elif option == 'Startup':
-            st.sidebar.selectbox('Select Startup', ['Ola', 'Unacademy'])
-            # btn1 = st.sidebar.button('Find Startup details')
             st.title('Startup Analysis')
+            self.startup()
         elif option == 'Investor':
             self.investor()
 
@@ -129,6 +129,14 @@ class Main:
         st.divider()
         self.overall_component.plot_funding_amount_year_month()
 
+    def startup(self):
+        startup_name = st.sidebar.selectbox('Select Startup', ['Ola', 'Unacademy'])
+        btn = st.sidebar.button('Find Startup details')
+
+        if btn:
+            self.startup_component.similar_startups(startup_name)
+
+
     def investor(self):
         """
         Render the investor analysis component.
@@ -184,22 +192,8 @@ class Main:
                 self.investor_component.plot_yoy_investment(investor_name)
             st.divider()
 
-            similar_investors = self.investor_analysis.get_similar_investors(investor_name)
-
-            st.subheader(
-                'Similar Investors',
-                help=f"These investors have invested in the same sectors as {investor_name}."
-            )
-            st.write('')
-            col7, col8, col9, col10 = st.columns(4)
-            with col7:
-                st.write(similar_investors[0])
-            with col8:
-                st.write(similar_investors[1])
-            with col9:
-                st.write(similar_investors[2])
-            with col10:
-                st.write(similar_investors[3])
+            self.investor_component.similar_investors(investor_name)
+            
 
 
 Main()

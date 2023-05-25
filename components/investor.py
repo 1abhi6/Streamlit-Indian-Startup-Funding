@@ -146,3 +146,33 @@ class Investor:
         yoy_investment_df = self.investor_analysis.yoy_investment(investor_name)
         fig = px.line(yoy_investment_df, x="year", y="amount")
         st.plotly_chart(fig, use_container_width=True)
+
+    def similar_investors(self,investor_name):
+        similar_investors = self.investor_analysis.get_similar_investors(investor_name)
+
+        st.subheader(
+            'Similar Investors',
+            help=f"These investors have invested in the same sectors as {investor_name}."
+        )
+        st.write('')
+        col0, col1, col2, col3 = st.columns(4)
+        with col0:
+            try:
+                st.write(similar_investors[0])
+            except IndexError:
+                st.write('')
+        with col1:
+            try:
+                st.write(similar_investors[0])
+            except IndexError:
+                st.write('')
+        with col2:
+            try:
+                st.write(similar_investors[0])
+            except IndexError:
+                st.write('')
+        with col3:
+            try:
+                st.write(similar_investors[0])
+            except IndexError:
+                st.write('')
