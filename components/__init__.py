@@ -8,11 +8,6 @@ Components:
 Styles:
 - padding_top: A function providing CSS styling for setting the top padding of an element.
 
-Usage:
-To use the components and styles provided by this module, import them directly from the module:
-
-    from components import Investor
-    from components import padding_top
 
 Author: Abhishek Gupta
 Github: https://github.com/1abhi6

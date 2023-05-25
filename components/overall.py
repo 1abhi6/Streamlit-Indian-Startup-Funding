@@ -28,7 +28,13 @@ from analysis import Overall as OverallAnalysis
 class PlotHorizontalBarChart:
     """Class to plot a horizontal bar chart."""
 
-    def __init__(self, x_axis: pd.Series, y_axis: pd.Series, layout_title, layout_x_axis: str, layout_yaxis: str) -> None:
+    def __init__(
+            self,
+            x_axis: pd.Series,
+            y_axis: pd.Series,
+            layout_title,
+            layout_x_axis: str,
+            layout_yaxis: str) -> None:
         """
         Initialize the PlotHorizontalBarChart class.
 
