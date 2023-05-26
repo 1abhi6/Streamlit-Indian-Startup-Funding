@@ -131,7 +131,10 @@ class Main:
             )
 
         st.divider()
-        st.header('MoM Graph')
+        st.header(
+            'MoM Graph',
+            help='Graph on the basis of month for quick overview.'
+        )
         st.divider()
 
         selected_option = st.selectbox(
