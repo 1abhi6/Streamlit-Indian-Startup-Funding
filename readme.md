@@ -1,6 +1,6 @@
 # Streamlit Indian Startup Funding Data Visualization
 
-This project aims to visualize Indian startup funding data using pandas and Plotly for interactive plots. The project is built using Streamlit, a popular Python library for building web applications. The dataset used for analysis is sourced from Kaggle, specifically the "Indian Startup Funding" dataset by Sudalairajkumar.
+This project aims to visualize Indian startup funding data using pandas and Plotly for interactive plots. The project is built using Streamlit, a popular Python library for building web applications. The dataset used for analysis is sourced from Kaggle, specifically the "<a href="https://www.kaggle.com/datasets/sudalairajkumar/indian-startup-funding" target="_blank" > Indian Startup Funding </a>" dataset.
 
 ## Features
 
