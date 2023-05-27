@@ -128,4 +128,3 @@ The Streamlit Indian Startup Funding Data Visualization project is licensed unde
 For any questions or inquiries, feel free to reach out to me at:
 
 - Website: [Abhishek Gupta](abhi.getifyme.com)
-- E mail: [Abhishek Gupta](abhi@getfiyme.com)
