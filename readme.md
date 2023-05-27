@@ -115,16 +115,8 @@ The Investor Analysis section enables users to select a specific investor from a
 5. To select a specific startup or investor for analysis, use the dropdown menus provided.
 6. Gain insights and explore the interactive visualizations to understand the Indian startup funding landscape.
 
-## Contributing
-
-Contributions to the project are welcome! If you find any issues or have suggestions for improvements, please create a GitHub issue in the project repository.
-
-## License
-
-The Streamlit Indian Startup Funding Data Visualization project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
 ## Contact
 
 For any questions or inquiries, feel free to reach out to me at:
 
-- Website: [Abhishek Gupta](abhi.getifyme.com)
+- Website: [Abhishek Gupta](https://www.abhi.getifyme.com)
