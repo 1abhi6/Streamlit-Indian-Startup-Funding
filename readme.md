@@ -1,122 +1,131 @@
 # Streamlit Indian Startup Funding Data Visualization
 
-This project aims to visualize Indian startup funding data using pandas and Plotly for interactive plots. The project is built using Streamlit, a popular Python library for building web applications. The dataset used for analysis is sourced from Kaggle, specifically the <a href="https://www.kaggle.com/datasets/sudalairajkumar/indian-startup-funding" target="_blank" > Indian Startup Funding </a> dataset.
+Welcome to the Streamlit Indian Startup Funding Data Visualization project! This project aims to provide comprehensive visualizations and analysis of the Indian startup funding dataset using Pandas, Plotly, and Streamlit. It offers interactive plots and informative tooltips to explore various aspects of startup investments and investors.
 
-## Features
+## Table of Contents
 
-The website provides a comprehensive set of visualizations and analysis for the Indian startup funding dataset. The features and sections of the website are as follows:
+- [Project Overview](#project-overview)
+- [Installation](#installation)
+- [Dataset](#dataset)
+- [Website Structure](#website-structure)
+    - [Section 1: Overall Analysis](#section-1-overall-analysis)
+    - [Section 2: Startup Analysis](#section-2-startup-analysis)
+    - [Section 3: Investor Analysis](#section-3-investor-analysis)
+- [How to Use](#how-to-use)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-### Section 1: Overall Analysis
+## Project Overview
 
-Upon landing on the website, the user is presented with an overall analysis of startups and investors. This section includes the following metrics:
+The Streamlit Indian Startup Funding Data Visualization project is a personal project developed to analyze and visualize the Indian startup funding dataset. It provides a web-based interface built with Streamlit, allowing users to explore the dataset and gain insights through interactive plots and metrics. The project utilizes Pandas and Plotly libraries for data manipulation and visualization, respectively.
 
-1. Total Investments Made So Far: Displays the total amount of investments made in startups.
+The main objectives of this project are:
 
-2. Maximum Investment: Shows the highest investment amount made in a startup.
+1. Perform an overall analysis of the startup funding ecosystem in India.
+2. Enable analysis of individual startups based on user selection.
+3. Provide insights into individual investors based on user selection.
 
-3. Average Investment: Displays the average investment amount across all startups.
+## Installation
 
-4. Total Funded Startups: Shows the total count of startups that received funding.
+To run the project locally, follow the steps below:
 
-Following the metrics, the section includes the following visualizations:
+1. Clone the GitHub repository:
 
-1. Month-on-Month Line Graph - Total Amount of Funding: Shows the trend of the total amount of funding over different months.
+   ```
+   git clone https://github.com/1abhi6/Streamlit-Indian-Startup-Funding.git
+   ```
 
-2. Month-on-Month Line Graph - Total Funded Startups: Displays the trend of the number of funded startups over different months.
+2. Navigate to the project directory:
 
-3. Line Graph - Total Funded Indian Startups Month-on-Month: Illustrates the trend of the number of funded Indian startups over different months.
+   ```
+   cd Streamlit-Indian-Startup-Funding
+   ```
 
-4. Horizontal Bar Graph - Top 10 Most Funded Sectors (2015-2020): Shows the top 10 sectors that received the most funding between 2015 and 2020.
+3. Install the required dependencies using pip:
 
-5. Horizontal Bar Graph - Top Investors by Investment Value: Displays the top investors based on their investment values.
-
-6. 3D Bar Graph - Top 10 Most Funded Startups (Year-on-Year): Shows the top 10 startups that received the most funding in each year.
-
-7. Horizontal Bar Graph - Top 10 Most Funded Cities: Illustrates the top 10 cities with the most funded startups.
-
-8. Horizontal Bar Graph - Top 10 Most Funded Types of Rounds: Shows the top 10 types of funding rounds that received the most funding.
-
-At the end of this section, a Heatmap is provided to visualize the funding amount by year and month.
-
-### Section 2: Startup Analysis
-
-In this section, users can select an individual startup from a dropdown menu to view specific analysis for that startup. The section includes the following:
-
-1. Selected Startup Name: Displays the name of the selected startup.
-
-2. Streamlit Metrics:
-   - Total Investments (In Crore Rs): Shows the total amount of investments made in the selected startup.
-   - Sector of Startup: Displays the sector to which the selected startup belongs.
-   - Subsector of Startup: Shows the subsector of the selected startup.
-   - Stage of Funding: Displays the funding stage at which the selected startup was funded.
-   - Investors: Lists the investors who have funded the selected startup.
-
-Following the metrics, a subsection titled "Similar Startups" displays other startups belonging to the same sector as the selected startup.
-
-### Section 3: Investor Analysis
-
-Similar to the startup analysis section, this section allows users to select an individual investor from a dropdown menu for specific analysis. The section includes the following:
-
-1. Selected Investor Name: Displays the name of the selected investor.
-
-2. Recent Investments Dataframe: Shows a dataframe consisting of the five most recent investments made by the selected investor. The columns include:
-   - Date of Investment
-   - Startup Name
-   - Vertical
-   - City
-   - Investors
-
-Following the dataframe, the section includes the following visualizations:
-
-1. Bar
-
- Chart - Biggest Investments: Illustrates the biggest investments made by the selected investor in terms of amount.
-
-2. Pie Chart - Most Invested City: Displays the city in which the selected investor has made the most investments in terms of amount.
-
-3. Pie Chart - Most Invested Sector: Shows the sector in which the selected investor has made the most investments in terms of amount.
-
-4. Pie Chart - Most Invested Subsector: Illustrates the subsector in which the selected investor has made the most investments in terms of amount.
-
-5. Pie Chart - Most Invested Investment Type: Displays the investment type in which the selected investor has made the most investments in terms of amount.
-
-6. Line Graph - Year-on-Year Investment: Shows the year-on-year trend of investments made by the selected investor in terms of amount.
-
-At the end of the section, a subsection titled "Similar Investors" displays four investors who have invested in the same sectors as the selected investor.
-
-
-## Running the Application
-
-To run the web application locally, follow these steps:
-
-1. Clone the GitHub repository to your local machine.
-
-2. Ensure that you have Python installed (recommended version: Python 3.7+).
-
-3. Open a terminal or command prompt and navigate to the project directory.
-
-4. Install the required Python packages by running the following command:
-
-   ```shell
+   ```
    pip install -r requirements.txt
    ```
 
-5. Once the dependencies are installed, start the application by running the following command:
+4. Run the Streamlit app:
 
-   ```shell
+   ```
    streamlit run app.py
    ```
 
-6. The application will start running, and the terminal will display a local URL (e.g., `http://localhost:8501`).
+5. The app should now be running locally. Open your web browser and access the following URL:
 
-7. Open a web browser and enter the URL displayed in the terminal to access the web application.
+   ```
+   http://localhost:8501
+   ```
 
-8. Interact with the different sections and features of the web application to explore the Indian startup funding data visualizations.
+## Dataset
 
-Note: The application requires an internet connection to access the Plotly library for generating interactive plots.
+The dataset used in this project is sourced from Kaggle and is provided by Sudalai Rajkumar. The dataset contains information about Indian startup funding, including details about the startups, investors, funding amounts, sectors, and more. You can find the dataset at the following Kaggle link: [Indian Startup Funding Dataset](https://www.kaggle.com/datasets/sudalairajkumar/indian-startup-funding)
 
-## Conclusion
+Ensure that you download the dataset and place it in the appropriate directory within the project structure.
 
-The Streamlit Indian Startup Funding Data Visualization project provides an interactive web interface for exploring and analyzing the Indian startup funding dataset. The website offers comprehensive visualizations, metrics, and analysis for overall startup and investor insights, as well as individual startup and investor analysis. Users can navigate through the various sections and explore the data using interactive plots, dropdown menus, and tooltips for additional information.
+## Website Structure
 
-By leveraging the power of pandas, Plotly, and Streamlit, this project enables users to gain valuable insights into the Indian startup funding ecosystem and make data-driven decisions.
+The website consists of three main sections: Overall Analysis, Startup Analysis, and Investor Analysis. Each section offers different visualizations and insights based on the selected data.
+
+### Section 1: Overall Analysis
+
+The Overall Analysis section provides an overview of the startup funding ecosystem in India. It includes the following components:
+
+- **Month by Month Analysis**: This component displays key metrics such as total investments made so far, maximum investment, average investment, and total funded startups.
+- **Month-on-Month Line Graphs**: This component presents line graphs for the total amount of funding and total funded startups month-on-month.
+- **Total Funded Indian Startups**: This line graph illustrates the total number of funded Indian startups month-on-month.
+- **Top 10 Most Funded Sectors**: This horizontal bar graph shows the top 10 sectors with the highest funding amounts between 2015 and 2020.
+- **Top Investors**: This horizontal bar graph showcases the top investors based on
+
+ their investment values.
+- **Top 10 Most Funded Startups**: This 3D bar graph represents the top 10 most funded startups in startup funding year-on-year.
+- **Top 10 Most Funded Cities**: This horizontal bar graph displays the top 10 cities with the most startup funding.
+- **Top 10 Most Funded Round Types**: This horizontal bar graph presents the top 10 round types in startup funding.
+- **Heatmap**: This heatmap visualizes the funding amount by year and month.
+
+### Section 2: Startup Analysis
+
+The Startup Analysis section allows users to select a specific startup from a dropdown menu and provides detailed insights about that startup. The section includes:
+
+- **Selected Startup Information**: This component displays various metrics for the selected startup, including total investments, sector, subsector, funding stage, and investors.
+- **Similar Startups**: This section presents a list of similar startups that belong to the same sector as the selected startup.
+
+### Section 3: Investor Analysis
+
+The Investor Analysis section enables users to select a specific investor from a dropdown menu and explore their investment activities. The section includes:
+
+- **Selected Investor Information**: This component provides information about the selected investor and their recent investments, including the date of investment, startup name, vertical, city, and other investors involved.
+- **Biggest Investments**: This bar chart showcases the biggest investments made by the selected investor in terms of amount.
+- **Most Invested City**: This pie chart illustrates the most invested city by the selected investor in terms of amount.
+- **Most Invested Sector**: This pie chart presents the most invested sector by the selected investor in terms of amount.
+- **Most Invested Subsector**: This pie chart displays the most invested subsector by the selected investor in terms of amount.
+- **Most Invested Investment Type**: This pie chart represents the most invested investment type by the selected investor in terms of amount.
+- **YoY Investment**: This line graph shows the year-on-year investment trend of the selected investor in terms of amount.
+- **Investors in Similar Sectors**: This component lists four investors who have invested in the same sectors as the selected investor.
+
+## How to Use
+
+1. Launch the Streamlit app by following the installation instructions mentioned earlier.
+2. Once the app is running, access the provided URL in your web browser.
+3. The website will load, displaying the Overall Analysis section by default.
+4. Explore the different components and visualizations within each section.
+5. To select a specific startup or investor for analysis, use the dropdown menus provided.
+6. Gain insights and explore the interactive visualizations to understand the Indian startup funding landscape.
+
+## Contributing
+
+Contributions to the project are welcome! If you find any issues or have suggestions for improvements, please create a GitHub issue in the project repository.
+
+## License
+
+The Streamlit Indian Startup Funding Data Visualization project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Contact
+
+For any questions or inquiries, feel free to reach out to me at:
+
+- Website: [Abhishek Gupta](abhi.getifyme.com)
+- E mail: [Abhishek Gupta](abhi@getfiyme.com)
