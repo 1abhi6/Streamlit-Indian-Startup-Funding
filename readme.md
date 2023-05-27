@@ -119,4 +119,4 @@ The Investor Analysis section enables users to select a specific investor from a
 
 For any questions or inquiries, feel free to reach out to me at:
 
-- Website: [Abhishek Gupta](https://www.abhi.getifyme.com)
+- Website: [Abhishek Gupta](https://abhi.getifyme.com/)
